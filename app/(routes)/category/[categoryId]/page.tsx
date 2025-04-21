@@ -39,12 +39,11 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     let colors = await getColors();
 
     const category = await getCategory(params.categoryId);
-    if (category.name == "shoes") {
+    if (category?.name?.toLowerCase()?.includes("shoes")) {
         sizes = sizes.filter((size) => !isNaN(Number(size.name)));
     }else{
         sizes = sizes.filter((size) => isNaN(Number(size.name)));
     }
-    console.log(sizes)
     const crumbs = [
         {
             label: "Home",
